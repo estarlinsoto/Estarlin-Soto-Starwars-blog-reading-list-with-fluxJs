@@ -1,42 +1,76 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
+			allData: [
+
+			],
+			selectedCharacterData: [
+
+			],
+			favList: [
+
 			]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			getAllData: async () => {
+				try {
+					const store = getStore()
+					await fetch("https://swapi.dev/api/people")
+						.then(res => res.json())
+						.then(data => {
+							store.allData.push(data.results)
+							//console.log(data.results)
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+						})
+					setStore({ store: store.allData })
 
-				//reset the global store
-				setStore({ demo: demo });
+				}
+				catch (e) {
+					console.log("getAllData ERROR ==", e)
+				}
+			},
+			selectedCharacter: (index) => {
+				try {
+					const store = getStore()
+					setStore({ store: store.selectedCharacterData.shift() })
+					store.selectedCharacterData.push(store.allData[0][index])
+					setStore({ store: store.selectedCharacterData })
+
+				}
+				catch (e) {
+					console.log("getAllData ERROR ==", e)
+
+				}
+			},
+			addFavChar: (name) => {
+				try {
+
+					const store = getStore()
+					const actions = getActions()
+					if(!store.favList.includes(name)){
+					store.favList.push(name)
+					setStore({ store: store.favList })
+				}
+				else if(store.favList.includes(name)){
+					actions.deleteFavChar(name)
+				}
+				}
+				catch (e) {
+					console.log("addFavChar funtion ERROR=== ", e)
+				}
+			},
+			deleteFavChar: (name) => {
+				try {
+					const store = getStore()
+					const newFavList = store.favList.filter((ele, i) => ele !== name)
+					store.favList = newFavList
+
+					setStore({ store: store.newFavList })
+
+				}
+				catch (e) {
+					console.log("addFavChar funtion ERROR=== ", e)
+				}
 			}
 		}
 	};
