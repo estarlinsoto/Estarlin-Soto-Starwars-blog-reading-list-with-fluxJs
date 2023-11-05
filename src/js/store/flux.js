@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -47,13 +49,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const store = getStore()
 					const actions = getActions()
-					if(!store.favList.includes(name)){
-					store.favList.push(name)
-					setStore({ store: store.favList })
-				}
-				else if(store.favList.includes(name)){
-					actions.deleteFavChar(name)
-				}
+					if (!store.favList.includes(name)) {
+						store.favList.push(name)
+						setStore({ store: store.favList })
+					}
+					else if (store.favList.includes(name)) {
+						actions.deleteFavChar(name)
+					}
 				}
 				catch (e) {
 					console.log("addFavChar funtion ERROR=== ", e)
@@ -71,7 +73,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 				catch (e) {
 					console.log("addFavChar funtion ERROR=== ", e)
 				}
-			}
+			},
+			getPeople: async (id) => {
+				try {
+
+					console.log(id)
+					const store = getStore()
+					setStore({ store: store.selectedCharacterData.shift() })
+
+					await fetch(`https://swapi.dev/api/people/${id}`)
+						.then(res => res.json())
+						.then(data => {
+							
+							store.selectedCharacterData.push(data)
+							console.log(data)
+							setStore({ store: store.selectedCharacter })
+						})
+
+
+				}
+				catch (e) {
+					console.log("error prueba=", e)
+				}
+			},
+			nextPageFunc: async (page) => {
+				try {
+					
+					const store = getStore()
+					await fetch("https://swapi.dev/api/people")
+						.then(res => res.json())
+						.then(data => {
+							store.allData.push(data.results)
+							//console.log(data.results)
+
+						})
+					setStore({ store: store.allData })
+
+				}
+				catch (e) {
+					console.log("getAllData ERROR ==", e)
+				}
+			},
 		}
 	};
 };

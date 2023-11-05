@@ -9,9 +9,11 @@ export const Navbar = () => {
 		<div className="container">
 			<nav className="navbar ">
 				<div className="container-fluid">
-
+					<div>
+					<Link to={"/starwarshome"}>
 					<img src="https://www.freepnglogos.com/uploads/star-wars-logo-3.png" className="navbar-brand w-25 h-25" />
-
+					</Link>
+					</div>
 					<div className="dropdown-center">
 						<button className=" btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 

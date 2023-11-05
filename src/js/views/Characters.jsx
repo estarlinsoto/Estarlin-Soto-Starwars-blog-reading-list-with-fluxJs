@@ -8,7 +8,8 @@ import "../../styles/Characters.css";
 export const Characters = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
- 
+  
+  actions.next
 
   return (
     <div className="container-fluid">
@@ -25,15 +26,20 @@ export const Characters = () => {
                 <p className="card-text"><b>Gender: </b> {e.gender}</p>
                 <p className="card-text"><b>Hair color: </b> {e.hair_color}</p>
                 <p className="card-text"><b>Eye color: </b> {e.eye_color}</p>
-                <Link to={`/people/${e.name}`} className="m-5">
+                <Link to={`/starwarshome/characters/people/${e.url.slice(-2, -1)}`} className="m-5">
                   <button className="btn btn-primary  " onClick={() => actions.selectedCharacter(i)}>Learn more!</button>
 
                 </Link>
                 <button className="btn btn-primary justify-content-between " onClick={() => actions.addFavChar(e.name)} >{store.favList.includes(e.name) ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}</button>
               </div>
 
+
+
             </div>
+
           ))}
+
+        
       </div>
     </div>
 

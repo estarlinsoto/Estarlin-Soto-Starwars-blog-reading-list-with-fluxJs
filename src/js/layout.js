@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { People } from "./views/People.jsx";
 import { StarWarsHome } from "./views/StarWarsHome.jsx";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import { Characters } from "./views/Characters.jsx";
+import { People } from "./views/People.jsx";
+
+
 
 
 //create your first component
@@ -20,7 +23,8 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/starwarshome" element={<StarWarsHome />} />
-						<Route path="/people/:name" element={<People />} />
+						<Route path="/starwarshome/characters/:page" element={<Characters />} />
+						<Route path="/starwarshome/characters/people/:id" element={<People/>} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 
