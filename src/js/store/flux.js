@@ -18,10 +18,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 		},
 		actions: {
-			getAllData: async (page) => {
+			getAllData: async () => {
 				try {
 					const store = getStore()
-					await fetch(`https://swapi.dev/api/people/?page=${page}`)
+					await fetch(`https://swapi.dev/api/people`)
 						.then(res => res.json())
 						.then(data => {
 							store.allData.push(data)
@@ -105,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const store = getStore()
 					console.log("soy la funcion next page",page)			
 						setStore({ store: store.allData.shift() })
-					const res = await fetch(`https://swapi.dev/api/people/?page=${page}`)
+						await fetch(`https://swapi.dev/api/people/?page=${page}`)
 							.then(res => res.json())
 							.then(data => {
 								//setStore(...store.allData[0].results, data.results)
