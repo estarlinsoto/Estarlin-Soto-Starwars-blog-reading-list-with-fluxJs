@@ -11,31 +11,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			favList: [
 
+			],
+			moreDataChars: [
+				
 			]
+			
 		},
 		actions: {
-			getAllData: async () => {
+			getAllData: async (page) => {
 				try {
 					const store = getStore()
-					await fetch("https://swapi.dev/api/people")
+					await fetch(`https://swapi.dev/api/people/?page=${page}`)
 						.then(res => res.json())
 						.then(data => {
-							store.allData.push(data.results)
-							//console.log(data.results)
-
+							store.allData.push(data)
+							//console.log(data)
+							console.log(store.allData)
 						})
 					setStore({ store: store.allData })
+					console.log(store.allData[0].next)
 
 				}
 				catch (e) {
 					console.log("getAllData ERROR ==", e)
 				}
 			},
+
 			selectedCharacter: (index) => {
 				try {
 					const store = getStore()
 					setStore({ store: store.selectedCharacterData.shift() })
-					store.selectedCharacterData.push(store.allData[0][index])
+					store.selectedCharacterData.push(store.allData.results[0][index])
 					setStore({ store: store.selectedCharacterData })
 
 				}
@@ -77,38 +83,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPeople: async (id) => {
 				try {
 
-					console.log(id)
+
 					const store = getStore()
 					setStore({ store: store.selectedCharacterData.shift() })
 
 					await fetch(`https://swapi.dev/api/people/${id}`)
 						.then(res => res.json())
 						.then(data => {
-							
 							store.selectedCharacterData.push(data)
-							console.log(data)
 							setStore({ store: store.selectedCharacter })
 						})
 
 
 				}
 				catch (e) {
-					console.log("error prueba=", e)
+					console.log("error getPeople function=", e)
 				}
 			},
 			nextPageFunc: async (page) => {
 				try {
-					
 					const store = getStore()
-					await fetch("https://swapi.dev/api/people")
-						.then(res => res.json())
-						.then(data => {
-							store.allData.push(data.results)
-							//console.log(data.results)
-
-						})
-					setStore({ store: store.allData })
-
+					console.log("soy la funcion next page",page)			
+						setStore({ store: store.allData.shift() })
+					const res = await fetch(`https://swapi.dev/api/people/?page=${page}`)
+							.then(res => res.json())
+							.then(data => {
+								//setStore(...store.allData[0].results, data.results)
+								store.allData.push(data)
+								console.log("store. alldataaaaa Chars",store.allData)
+								//console.log("soy data.results", data.results)
+								
+							})
+						setStore({ store:  store.allData})
+							
+					
+				}
+				catch (e) {
+					console.log("getAllData ERROR ==", e)
+				}
+			},
+			prevPageFunc: async (page) => {
+				try {
+					const store = getStore()
+					if (store.allData[0].previous != null) {
+						setStore({ store: store.allData.shift() })
+						await fetch(`https://swapi.dev/api/people/?page=${page}`)
+							.then(res => res.json())
+							.then(data => {
+								store.allData.push(data)
+								//console.log(data.results)
+								
+							})
+						setStore({ store: store.allData })
+							
+					}
 				}
 				catch (e) {
 					console.log("getAllData ERROR ==", e)

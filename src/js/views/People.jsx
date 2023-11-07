@@ -12,7 +12,6 @@ export const People = () => {
     useEffect(() => {
         actions.getPeople(params.id)
 
-
     }, []);
 
 
@@ -27,7 +26,7 @@ export const People = () => {
                 : store.selectedCharacterData.map((ele, index) =>
                     <div className="row">
                         <div className="col-6 justify-content-center d-flex">
-                            <img src={`https://starwars-visualguide.com/assets/img/characters/${ele.url.slice(-2, -1)}.jpg`} className="rounded-circle" alt="..." />
+                            <img src={`https://starwars-visualguide.com/assets/img/characters/${ele.url.slice(-3, -1)}.jpg`} className="rounded-circle" alt="..." />
 
 
                         </div>
