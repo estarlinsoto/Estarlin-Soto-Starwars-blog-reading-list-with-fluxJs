@@ -22,9 +22,9 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/starwarshome" element={<StarWarsHome />} />
+						<Route path="/" element={<StarWarsHome />} />
 						<Route path="/starwarshome/characters/people/:id" element={<People/>} />
-						<Route path="*" element={<h1>Not found!</h1>} />
+						<Route path="*" element={<h1>Not found! :(</h1>} />
 					</Routes>
 
 				</ScrollToTop>
