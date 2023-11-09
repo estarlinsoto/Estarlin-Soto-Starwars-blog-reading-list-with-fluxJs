@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 
 			vehiclesPagination: 2,
-			//////////////////////// Storage de planetas
+//////////////////////// Storage de planetas
 
 			allPlanetsData: [
 			],
@@ -276,7 +276,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const actions = getActions()
 					const exists = store.planetsFavList.some(obj => obj.name === name);
 					if (!exists) {
-						store.planetsData.push(favObt)
+						store.planetsFavList.push(favObt)
 						setStore({ store: store.planetsFavList })
 					} else {
 						actions.deleteFavPlanet(name)

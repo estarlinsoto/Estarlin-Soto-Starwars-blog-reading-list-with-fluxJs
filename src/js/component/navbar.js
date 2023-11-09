@@ -19,20 +19,42 @@ export const Navbar = () => {
 
 							Favorites
 							<span className=" m-1 badge pill bg-danger p-2">
-								{store.favList.length}
+								{store.favList.length +  store.planetsFavList.length + store.vehiclesFavList.length}
 							</span>
 
 						</button>
 						<ul className="dropdown-menu">
-							{store.favList.length === 0 ? <li className="dropdown-item d-flex">(Add your favorites characters)</li> :
+									{ store.favList.length > 0 ?  <p className="text-center text-secondary mb-0">--Characters--</p> : '' }
+							{store.favList.length === 0 ? <li className="dropdown-item justify-content-between text-center text-secondary">(Add your favorites characters)</li> :
+								store.favList.map((ele, index) => <div className="dropdown-item d-flex  justify-content-between" >
+									<Link to={ele.url.length > 31 ? `/characters/people/${ele.url.slice(-3, -1)}` : `/characters/people/${ele.url.slice(-2, -1)}`} >
+									 	<li key={index} onClick={() => actions.selectedCharacter(index)} >{ele.name}</li>
+									</Link>
+									<i class="fa-solid fa-trash-can d-flex justify-content-between m-2" onClick={() => actions.deleteFavChar(ele.name)} ></i>
+								</div>)}
 
-								store.favList.map((ele, index) => <div className="dropdown-item d-flex justify-content-between" >
+								{ store.vehiclesFavList.length > 0 ?  <p className="text-center text-secondary mt-4 mb-0">--Vehicles--</p> : '' }
+							{store.vehiclesFavList.length === 0 ? <li className="dropdown-item text-center text-secondary">(Add your favorites vehicles)</li> :
 
-									<Link  to={ele.url.length > 31 ? `/characters/people/${ele.url.slice(-3, -1)}` : `/characters/people/${ele.url.slice(-2, -1)}`} >
+								store.vehiclesFavList.map((ele, index) => <div className="dropdown-item d-flex justify-content-between" >
+
+									<Link to={ele.url.length > 31 ? `/characters/people/${ele.url.slice(-3, -1)}` : `/characters/people/${ele.url.slice(-2, -1)}`} >
 										<li key={index} onClick={() => actions.selectedCharacter(index)} >{ele.name}</li>
 									</Link>
 									<i class="fa-solid fa-trash-can d-flex justify-content-between m-2" onClick={() => actions.deleteFavChar(ele.name)} ></i>
 								</div>)}
+
+								{ store.planetsFavList.length > 0 ?  <p className="text-center text-secondary mt-4 mb-0">--Planets--</p> : '' }
+							{store.planetsFavList.length === 0 ? <li className="dropdown-item  text-center text-secondary">(Add your favorites planets)</li> :
+
+								store.planetsFavList.map((ele, index) => <div className="dropdown-item d-flex justify-content-between" >
+
+									<Link to={ele.url.length > 31 ? `/characters/people/${ele.url.slice(-3, -1)}` : `/characters/people/${ele.url.slice(-2, -1)}`} >
+										<li key={index} onClick={() => actions.selectedCharacter(index)} >{ele.name}</li>
+									</Link>
+									<i class="fa-solid fa-trash-can d-flex justify-content-between m-2" onClick={() => actions.deleteFavChar(ele.name)} ></i>
+								</div>)}
+
 
 
 						</ul>

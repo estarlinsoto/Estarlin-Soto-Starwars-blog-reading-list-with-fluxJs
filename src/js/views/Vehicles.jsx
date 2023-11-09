@@ -26,7 +26,7 @@ export const Vehicles = () => {
       <h1 className="text-center">Vehicles</h1>
       <h3 className="text-center">Pagegination {store.vehiclesPagination} charsdata {store.vehiclesData.length} page{page}</h3>
 
-      <div className="scrollBox text-center" >
+      <div className=" text-center" >
 
         {store.vehiclesData.length === 0 ?
           <div className="spinner-grow text-warning  loadingSpinner d-flex justify-content-center text-warning" role="status">

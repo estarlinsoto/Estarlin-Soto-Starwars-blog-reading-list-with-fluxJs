@@ -28,7 +28,7 @@ export const Characters = () => {
       <h1 className="text-center">characters</h1>
       <h3 className="text-center">Pagegination {store.charsPagination} charsdata {store.charsData.length} page{page}</h3>
 
-      <div className="scrollBox text-center" >
+      <div className=" text-center" >
 
         {store.charsData.length === 0 ?
           <div className="spinner-border text-warning   loadingSpinner d-flex justify-content-center text-warning" role="status">

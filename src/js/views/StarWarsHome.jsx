@@ -14,24 +14,30 @@ export const StarWarsHome = () => {
     <div className="container-fluid">
      
     
-      <div className="viewnsContainer">
+      <div className="row mt-5">
+
+        <div className=" col-sm-12 col-md-8 col-lg-2 text-center">
       <Link to={"/characters"}>
         <img src="https://starwars-visualguide.com/assets/img/categories/character.jpg" alt="CharsIMG" />
       </Link>
+      </div>
 
+      <div className="col-sm-12 col-md-8 col-lg-2 text-center">
       <Link to={"/Vehicles"}>
         <img src="https://starwars-visualguide.com/assets/img/categories/vehicles.jpg" alt="VehiclesIMG" />
       </Link>
-
+      </div>
       
+      <div className="col-sm-12 col-md-8 col-lg-2 text-center">
       <Link to={"/planets"}>
         <img src="https://starwars-visualguide.com/assets/img/categories/planets.jpg" alt="PlanetsIMG" />
       </Link>
      
     </div>
+    
+    </div>
     <div className="stars"></div>
     </div>
-
     
 
   )

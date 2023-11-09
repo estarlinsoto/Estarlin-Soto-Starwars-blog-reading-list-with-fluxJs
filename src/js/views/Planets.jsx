@@ -28,7 +28,7 @@ export const Planets = () => {
       <h1 className="text-center">Planets</h1>
       <h3 className="text-center">Pagegination {store.planetsPagination} charsdata {store.planetsData.length} page{page}</h3>
 
-      <div className="scrollBox text-center" >
+      <div className=" text-center" >
 
         {store.planetsData.length === 0 ?
           <div className="spinner-border text-warning   loadingSpinner d-flex justify-content-center text-warning" role="status">
