@@ -1,0 +1,17 @@
+.infoContainer{
+    background-color: rgba(250, 235, 215, 0.137);
+    height: 500px;
+    color: aliceblue;
+}
+
+h1{
+    color: aliceblue;
+}
+
+.loadingSpinner{
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    
+    
+}

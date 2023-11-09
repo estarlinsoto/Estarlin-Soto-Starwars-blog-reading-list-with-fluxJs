@@ -6,6 +6,10 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Characters } from "./views/Characters.jsx";
 import { People } from "./views/People.jsx";
+import { Vehicles } from "./views/Vehicles.jsx";
+import { VehiclesDetails } from "./views/VehiclesDetails.jsx";
+import { Planets } from "./views/Planets.jsx";
+import { PlanetsDetails } from "./views/PlanetsDetails.jsx";
 
 
 
@@ -24,7 +28,11 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<StarWarsHome />} />
 						<Route path="/characters" element={<Characters />} />
+						<Route path="/vehicles" element={<Vehicles />} />
+						<Route path="/planets" element={<Planets />} />
+						<Route path="/vehicles/vehiclesdetails/:id" element={<VehiclesDetails />} />
 						<Route path="/characters/people/:id" element={<People />} />
+						<Route path="/planets/planetsdetails/:id" element={<PlanetsDetails />} />
 						<Route path="*" element={<h1>Not found! :(</h1>} />
 					</Routes>
 

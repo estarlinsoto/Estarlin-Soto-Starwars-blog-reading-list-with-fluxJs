@@ -1,27 +1,38 @@
 import React, { useState , useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 import "../../styles/StarWarsHome.css";
 
 
 export const StarWarsHome = () => {
-  const [page, setPage] = useState()
   const { store, actions } = useContext(Context);
-  const params = useParams();
+  
  
 
   return (
     <div className="container-fluid">
-
-      <div className="viewnsContainer"></div>
+     
+    
+      <div className="viewnsContainer">
       <Link to={"/characters"}>
         <img src="https://starwars-visualguide.com/assets/img/categories/character.jpg" alt="CharsIMG" />
       </Link>
 
+      <Link to={"/Vehicles"}>
+        <img src="https://starwars-visualguide.com/assets/img/categories/vehicles.jpg" alt="VehiclesIMG" />
+      </Link>
 
+      
+      <Link to={"/planets"}>
+        <img src="https://starwars-visualguide.com/assets/img/categories/planets.jpg" alt="PlanetsIMG" />
+      </Link>
+     
     </div>
+    <div className="stars"></div>
+    </div>
+
+    
 
   )
 }
