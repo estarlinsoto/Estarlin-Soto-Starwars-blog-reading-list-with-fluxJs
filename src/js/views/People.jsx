@@ -22,11 +22,11 @@ export const People = () => {
                 </div>
                 : store.selectedCharacterData.map((ele, index) =>
                     <div className="row">
-                        <div className="col-6 justify-content-center d-flex">
+                        <div className=" col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex">
                             <img src={`https://starwars-visualguide.com/assets/img/characters/${ele.url.slice(-3, -1)}.jpg`} className="rounded-circle" alt="..." />
 
                         </div>
-                        <div className="col-6 infoContainer rounded p-5">
+                        <div className="col-lg-6 col-md-12 col-sm-12 infoContainer rounded p-5">
 
                             <h1 className="text-center">{ele.name}</h1>
                             <p className="text-center"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus corrupti dolore facilis quas tempora cupiditate

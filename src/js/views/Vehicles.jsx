@@ -5,9 +5,9 @@ import { Context } from "../store/appContext";
 
 import "../../styles/Characters.css"
 
-export const Characters = () => {
+export const Vehicles = () => {
   const { store, actions } = useContext(Context);
-  let favListArr = []
+  let vehiclesFavListArr = []
 
   const params = useParams()
 
@@ -36,7 +36,7 @@ export const Characters = () => {
       <div className="scrollBox text-center" >
 
         {store.charsData.length === 0 ?
-          <div className="spinner-grow   loadingSpinner d-flex justify-content-center text-warning" role="status">
+          <div className="spinner-grow text-warning  loadingSpinner d-flex justify-content-center text-warning" role="status">
 
             <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea196117-0b64-49b7-b13f-79f43cf77e53/ddls31c-9247bae6-b63b-4209-b3d3-df61ddb1bf67.png/v1/fill/w_894,h_894/_baby_yoda___the_child_asset___1____png_by_captain_kingsman16_ddls31c-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTcxMSIsInBhdGgiOiJcL2ZcL2VhMTk2MTE3LTBiNjQtNDliNy1iMTNmLTc5ZjQzY2Y3N2U1M1wvZGRsczMxYy05MjQ3YmFlNi1iNjNiLTQyMDktYjNkMy1kZjYxZGRiMWJmNjcucG5nIiwid2lkdGgiOiI8PTE3MTEifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.wRYMxozbDjG7DJvfQomX0_e1EpX3DGgJXJcRE9usK8A" />
           </div>

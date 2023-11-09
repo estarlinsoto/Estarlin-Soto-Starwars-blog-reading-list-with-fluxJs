@@ -23,7 +23,8 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<StarWarsHome />} />
-						<Route path="/starwarshome/characters/people/:id" element={<People/>} />
+						<Route path="/characters" element={<Characters />} />
+						<Route path="/characters/people/:id" element={<People />} />
 						<Route path="*" element={<h1>Not found! :(</h1>} />
 					</Routes>
 
