@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
 import "../../styles/Characters.css"
+
 
 export const Characters = () => {
   const { store, actions } = useContext(Context);
+  // creo un array para poder mapearlo mas adelante a la hora de colorear el boton si el personaje ya esta agregado a la lista de favoritos
   let favListArr = []
-
+//Creo un estado local para poder controlar mis animaciones de carga y ocultar los botones cuando vienen datos en camino
   const [page, setPage] = useState(store.charsData.length)
 
 

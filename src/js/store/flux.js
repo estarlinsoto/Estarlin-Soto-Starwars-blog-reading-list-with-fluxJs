@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-///////////////////////// Storage de personas			
+			///////////////////////// Storage de personas			
 			allCharsData: [
 			],
 
@@ -12,12 +11,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			favList: [
 			],
-			
+
 			charsData: [
 			],
 
 			charsPagination: 2,
-//////////////////////// Storage de vehicles
+			//////////////////////// Storage de vehicles
 			allVehiclesData: [
 			],
 
@@ -31,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 
 			vehiclesPagination: 2,
-//////////////////////// Storage de planetas
+			//////////////////////// Storage de planetas
 
 			allPlanetsData: [
 			],
@@ -50,6 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
+			//hago mi primer get para guardar el resultado en charsData el que se convuierte en mi storage principal	
 			getAllCharsData: async () => {
 				try {
 					const store = getStore()
@@ -69,7 +69,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("getallCharsData ERROR ==", e)
 				}
 			},
-
+			//Con esta funcion uso el metodo some para saber si el favorito existe en la lista y de esta forma no permitir que se repitan los nombres en la lista
+			//en caso de que ya exista el nombrer procedo a llamar mi funcion que los borra de la lista
 			addFavChar: (name, url) => {
 				try {
 					const favObt = {
@@ -91,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("addFavChar function ERROR=== ", e)
 				}
 			},
-
+			//Creo una funcion con la que mediante un metodo filter devuelvo un array solo con todos los elementos menos el seleccionado que se pasa como parametro en la funcion
 			deleteFavChar: (name) => {
 				try {
 					const store = getStore()
@@ -105,19 +106,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("deleteFavChar function ERROR=== ", e)
 				}
 			},
-
+			//Esta funcion se encarga de recivir el numero de personaje que ocupa para luego hacer un get para luego guardarlo en un array de objetos para poder enseñar la pagina con la informacion
+			//Cada ves que la funcion es llamada el array anterior es borrado para poder enseñar una pagina con la informacion llamada
+			//adicional mente me aseguro de que cuando se busca el numero de personaje este dentro de la lista 
+			//en caso de que no lo este mando al usuario a una paginade error
 			getPeople: async (id) => {
 				try {
-
 					const store = getStore()
-					setStore({ store: store.selectedCharacterData.shift() })
 
+
+					setStore({ store: store.selectedCharacterData.shift() })
 					await fetch(`https://swapi.dev/api/people/${id}`)
 						.then(res => res.json())
 						.then(data => {
-							store.selectedCharacterData.push(data)
-							setStore({ store: store.selectedCharacter })
+							if (!data.detail) {
+								store.selectedCharacterData.push(data)
+								setStore({ store: store.selectedCharacter })
+							} else {
+								const errorObj = {
+									name: "Sorry that Page Dont Exist :(",
+									height: "Not exits",
+									url: "Not exitsNot exits",
+									gender: "Not exits",
+									hair_color: "Not exits",
+									skin_color: "Not exits",
+									eye_color: "Not exits",
+									birth_year: "Not exits",
+									mass: "Not exist"
+								}
+								
+								store.selectedCharacterData.push(errorObj)
+								setStore({ store: store.selectedCharacter })
+							
+		
+							}
+
 						})
+
+
 
 
 				}
@@ -125,6 +151,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("error getPeople function=", e)
 				}
 			},
+			//Con esta funcion recive un string "next" luego de recivirlo llamo a un objeto con la pagina actual 
+			//luego hago un get con el valor del objeto para poder hacer un llamado a la pagina siguiente
+			//luego hago un push para poder cargar los proximos 10 personajes debajo de los que ya existen
 
 			moreCharsFunc: async (page) => {
 				try {
@@ -142,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 				catch (e) {
-					console.log("getAllData ERROR ==", e)
+					console.log("moreChars function ERROR ==", e)
 				}
 			},
 
@@ -205,20 +234,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getVehicles: async (id) => {
 				try {
-
 					const store = getStore()
-					setStore({ store: store.selectedVehiclesData.shift() })
+					
+						setStore({ store: store.selectedVehiclesData.shift() })
 
-					await fetch(`https://swapi.dev/api/vehicles/${id}`)
-						.then(res => res.json())
-						.then(data => {
-							store.selectedVehiclesData.push(data)
-							setStore({ store: store.selectedVehiclesData })
-							console.log(data)
-						})
-
-
-				}
+						await fetch(`https://swapi.dev/api/vehicles/${id}`)
+							.then(res => res.json())
+							.then(data => {
+								if (!data.detail) {
+								store.selectedVehiclesData.push(data)
+								setStore({ store: store.selectedVehiclesData })
+								}else {
+									const errorObj = {
+										name: "Sorry that Page Dont Exist :(",
+										model: "Not exits",
+										url: "Not exitsNot exits",
+										cargo_capacity: "Not exits",
+										manufacturer: "Not exits",
+										cost_in_credits: "Not exits",
+										max_atmosphering_speed: "Not exits",
+										passengers: "Not exits",
+										vehicle_class: "Not exist"
+			
+									}
+									store.selectedVehiclesData.push(errorObj)
+									setStore({ store: store.selectedVehiclesData })
+								}
+							})
+					}
+					
 				catch (e) {
 					console.log("error getVehicles function=", e)
 				}
@@ -306,15 +350,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 
 					const store = getStore()
-					setStore({ store: store.selectedPlanetsData.shift() })
+					
+						setStore({ store: store.selectedPlanetsData.shift() })
 
-					await fetch(`https://swapi.dev/api/planets/${id}`)
-						.then(res => res.json())
-						.then(data => {
-							store.selectedPlanetsData.push(data)
-							setStore({ store: store.selectedPlanetsData })
-							console.log(data)
-						})
+						await fetch(`https://swapi.dev/api/planets/${id}`)
+							.then(res => res.json())
+							.then(data => {
+								if (!data.detail) {
+								store.selectedPlanetsData.push(data)
+								setStore({ store: store.selectedPlanetsData })
+								}	else {
+									const errorObj = {
+										name: "Sorry that Page Dont Exist :(",
+										rotation_period: "Not exits",
+										orbital_period: "Not exits",
+										diameter: "Not exits",
+										climate: "Not exits",
+										terrain: "Not exits",
+										population: "Not exits",
+										gravity: "Not exits",
+										url: "Not exist"
+			
+									}
+									store.selectedPlanetsData.push(errorObj)
+									setStore({ store: store.selectedPlanetsData })
+								}
+							})
+						
+				
 
 
 				}

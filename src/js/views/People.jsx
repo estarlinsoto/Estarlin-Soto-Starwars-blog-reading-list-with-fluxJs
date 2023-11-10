@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-
+import React, { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/People.css";
 
 
 export const People = () => {
     const { store, actions } = useContext(Context);
+    //hago una llamada a useParams() para poder hacer un get dependiendo del numero final
     const params = useParams();
 
     useEffect(() => {
