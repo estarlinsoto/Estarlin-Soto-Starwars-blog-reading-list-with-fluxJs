@@ -26,7 +26,7 @@ export const Characters = () => {
   return (
     <div className="container">
       <h1 className="text-center">characters</h1>
-      <h3 className="text-center">Pagegination {store.charsPagination} charsdata {store.charsData.length} page{page}</h3>
+      
 
       <div className=" text-center" >
 
@@ -59,7 +59,7 @@ export const Characters = () => {
         <div className=" row ">
           <div className=" col text-center my-3" >
             <button type="button" className={store.charsPagination === 10 || store.charsData.length === 0 ? "hide" : store.charsData.length != page ? "hide" : " btn btn-warning w-50 p-2"}
-              onClick={() => actions.moreCharsFunc("next", setPage(page + 1))} >More Chars</button>
+              onClick={() => actions.moreCharsFunc("next", setPage(page + 1))} ><b>More Characters!</b></button>
 
             <div className={store.charsData.length === 0 ? "hide" : store.charsData.length == page ? "hide" : "spinner-grow text-warning"} role="status">
             </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import error404IMG from "../../img/error404IMG.jpg"
 
 import { Context } from "../store/appContext";
 import "../../styles/VehiclesDetails.css";
@@ -23,7 +24,7 @@ export const VehiclesDetails = () => {
                 : store.selectedVehiclesData.map((ele, index) =>
                     <div className="row">
                         <div className=" col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex">
-                        <img src={ele.url.slice(-3, -1) > 43 ? "https://i.pinimg.com/564x/e8/63/92/e863927635dc1c5aba5663e8dd33efa0.jpg" : `https://starwars-visualguide.com/assets/img/vehicles/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle " alt="Not Found :(" />
+                        <img src={ele.url.slice(-3, -1) > 43 ? error404IMG : `https://starwars-visualguide.com/assets/img/vehicles/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle vehicleDetailsImg img-fluid" alt="Not Found :(" />
 
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 infoContainer rounded p-5">

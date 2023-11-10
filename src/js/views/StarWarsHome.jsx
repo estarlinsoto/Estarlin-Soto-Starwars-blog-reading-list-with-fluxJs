@@ -11,26 +11,36 @@ export const StarWarsHome = () => {
  
 
   return (
-    <div className="container-fluid">
+    <div className="container">
      
     
       <div className="row mt-5">
-
-        <div className=" col-sm-12 col-md-8 col-lg-2 text-center">
-      <Link to={"/characters"}>
-        <img src="https://starwars-visualguide.com/assets/img/categories/character.jpg" alt="CharsIMG" />
+      
+     
+        <div className=" col-sm-12 col-md-8 col-lg-4 my-5 d-flex justify-content-center  imgContainer">
+       
+      <Link to={"/characters"} className="text-decoration-none">
+      <h6 className="imgText text-warning ">
+        <img src="https://starwars-visualguide.com/assets/img/categories/character.jpg " className="img-fluid" alt="CharsIMG" />
+        Characters</h6>
       </Link>
+      
+     
       </div>
 
-      <div className="col-sm-12 col-md-8 col-lg-2 text-center">
-      <Link to={"/Vehicles"}>
-        <img src="https://starwars-visualguide.com/assets/img/categories/vehicles.jpg" alt="VehiclesIMG" />
+      <div className=" col-sm-12 col-md-8 col-lg-4 my-5 d-flex justify-content-center  imgContainer">
+      <Link to={"/Vehicles"} className="text-decoration-none">
+      <h6 className="imgText text-warning ">
+        <img src="https://starwars-visualguide.com/assets/img/categories/vehicles.jpg" className="img-fluid" alt="VehiclesIMG" />
+        Vehicles</h6>
       </Link>
       </div>
       
-      <div className="col-sm-12 col-md-8 col-lg-2 text-center">
-      <Link to={"/planets"}>
-        <img src="https://starwars-visualguide.com/assets/img/categories/planets.jpg" alt="PlanetsIMG" />
+      <div className="col-sm-12 col-md-8 col-lg-4 my-5 d-flex justify-content-center  imgContainer">
+      <Link to={"/planets"} className="text-decoration-none">
+      <h6 className="imgText text-warning ">
+        <img src="https://starwars-visualguide.com/assets/img/categories/planets.jpg" className="img-fluid" alt="PlanetsIMG" />
+        Planets</h6>
       </Link>
      
     </div>
