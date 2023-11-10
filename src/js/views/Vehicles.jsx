@@ -26,7 +26,7 @@ export const Vehicles = () => {
   return (
     <div className="container">
       <h1 className={store.vehiclesData.length === 0 ? "hide" : "text-center"} >Vehicles</h1>
-    
+
 
       <div className=" text-center" >
 
@@ -69,7 +69,7 @@ export const Vehicles = () => {
 
         </div>
       </div>
-      
+
     </div>
 
   )

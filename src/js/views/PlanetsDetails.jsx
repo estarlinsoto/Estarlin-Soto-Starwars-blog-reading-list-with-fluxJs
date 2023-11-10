@@ -24,8 +24,8 @@ export const PlanetsDetails = () => {
                 : store.selectedPlanetsData.map((ele, index) =>
                     <div className="row">
                         <div className=" col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex">
-                        <img src={ele.url.slice(-3, -1) > 21 || ele.name == "Tatooine" || ele.name == "Stewjon"? error404IMG : `https://starwars-visualguide.com/assets/img/planets/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle planetsDetailsImg img-fluid" alt="Not Found :(" />
-                            
+                            <img src={ele.url.slice(-3, -1) > 21 || ele.name == "Tatooine" || ele.name == "Stewjon" ? error404IMG : `https://starwars-visualguide.com/assets/img/planets/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle planetsDetailsImg img-fluid" alt="Not Found :(" />
+
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 infoContainer rounded p-5">
 
@@ -71,7 +71,7 @@ export const PlanetsDetails = () => {
                             </div>
 
                             <div className="col text-white text-center my-4">
-                                <h4>Gravity</h4>    
+                                <h4>Gravity</h4>
                                 <p key={index}>{ele.gravity}</p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ export const PlanetsDetails = () => {
 
 
                 )}
-                <div className="stars"></div>
+            <div className="stars"></div>
 
         </div>
 

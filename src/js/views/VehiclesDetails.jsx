@@ -24,7 +24,7 @@ export const VehiclesDetails = () => {
                 : store.selectedVehiclesData.map((ele, index) =>
                     <div className="row">
                         <div className=" col-lg-6 col-md-12 col-sm-12 justify-content-center d-flex">
-                        <img src={ele.url.slice(-3, -1) > 43 ? error404IMG : `https://starwars-visualguide.com/assets/img/vehicles/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle vehicleDetailsImg img-fluid" alt="Not Found :(" />
+                            <img src={ele.url.slice(-3, -1) > 43 ? error404IMG : `https://starwars-visualguide.com/assets/img/vehicles/${ele.url.slice(-3, -1)}.jpg `} className="rounded-circle vehicleDetailsImg img-fluid" alt="Not Found :(" />
 
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 infoContainer rounded p-5">
@@ -80,7 +80,7 @@ export const VehiclesDetails = () => {
 
 
                 )}
-                <div className="stars"></div>
+            <div className="stars"></div>
 
         </div>
 

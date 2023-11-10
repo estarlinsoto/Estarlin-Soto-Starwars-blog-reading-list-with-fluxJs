@@ -8,13 +8,10 @@ export const Characters = () => {
   const { store, actions } = useContext(Context);
   // creo un array para poder mapearlo mas adelante a la hora de colorear el boton si el personaje ya esta agregado a la lista de favoritos
   let favListArr = []
-//Creo un estado local para poder controlar mis animaciones de carga y ocultar los botones cuando vienen datos en camino
+  //Creo un estado local para poder controlar mis animaciones de carga y ocultar los botones cuando vienen datos en camino
   const [page, setPage] = useState(store.charsData.length)
 
-
   store.favList.map(el => favListArr.push(el.name))
-
-
 
   useEffect(() => {
     actions.getAllCharsData()
@@ -25,16 +22,15 @@ export const Characters = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center">characters</h1>
-      
+      <h1 className="text-center">Characters</h1>
+
 
       <div className=" text-center" >
-
         {store.charsData.length === 0 ?
           <div className="spinner-border text-warning   loadingSpinner d-flex justify-content-center text-warning" role="status">
-
             <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea196117-0b64-49b7-b13f-79f43cf77e53/ddls31c-9247bae6-b63b-4209-b3d3-df61ddb1bf67.png/v1/fill/w_894,h_894/_baby_yoda___the_child_asset___1____png_by_captain_kingsman16_ddls31c-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTcxMSIsInBhdGgiOiJcL2ZcL2VhMTk2MTE3LTBiNjQtNDliNy1iMTNmLTc5ZjQzY2Y3N2U1M1wvZGRsczMxYy05MjQ3YmFlNi1iNjNiLTQyMDktYjNkMy1kZjYxZGRiMWJmNjcucG5nIiwid2lkdGgiOiI8PTE3MTEifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.wRYMxozbDjG7DJvfQomX0_e1EpX3DGgJXJcRE9usK8A" />
           </div>
+          
           : store.charsData.map((ele, index) => ele.map((e, i) =>
             <div className="charsCard card m-2 " key={i} >
               <img src={`https://starwars-visualguide.com/assets/img/characters/${e.url.slice(-3, -1)}.jpg`} className="card-img-top" alt="..." />
@@ -65,12 +61,12 @@ export const Characters = () => {
             </div>
 
           </div>
-         
+
 
 
         </div>
       </div>
-     
+
     </div>
 
   )

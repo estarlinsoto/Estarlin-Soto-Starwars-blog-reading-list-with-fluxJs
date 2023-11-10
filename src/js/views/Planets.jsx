@@ -38,7 +38,7 @@ export const Planets = () => {
           </div>
           : store.planetsData.map((ele, index) => ele.map((e, i) =>
             <div className="charsCard card m-2 " key={i} >
-              <img src={e.url.slice(-3, -1) > 21 || e.name == "Tatooine" || e.name == "Stewjon"? error404IMG : `https://starwars-visualguide.com/assets/img/planets/${e.url.slice(-3, -1)}.jpg `} className="card-img-top" alt="..." />
+              <img src={e.url.slice(-3, -1) > 21 || e.name == "Tatooine" || e.name == "Stewjon" ? error404IMG : `https://starwars-visualguide.com/assets/img/planets/${e.url.slice(-3, -1)}.jpg `} className="card-img-top" alt="..." />
               <div className="card-body text-white text-center" key={i}>
                 <h5 className="card-title">{e.name}</h5>
                 <Link to={e.url.length > 32 ? `/planets/planetsdetails/${e.url.slice(-3, -1)}` : `/planets/planetsdetails/${e.url.slice(-2, -1)}`} className="mx-4">
@@ -59,16 +59,16 @@ export const Planets = () => {
             <button type="button" className={store.planetsPagination === 7 || store.planetsData.length === 0 ? "hide" : store.planetsData.length != page ? "hide" : " btn btn-warning w-50 p-2"}
               onClick={() => actions.morePlanetsFunc("next", setPage(page + 1))} ><b>More Planets!</b></button>
 
-            <div className={ store.planetsData.length === 0 ? "hide" : store.planetsData.length == page ? "hide" : "spinner-grow text-warning"} role="status">
+            <div className={store.planetsData.length === 0 ? "hide" : store.planetsData.length == page ? "hide" : "spinner-grow text-warning"} role="status">
             </div>
 
           </div>
-         
+
 
 
         </div>
       </div>
-     
+
     </div>
 
   )

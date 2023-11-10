@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.then(data => {
 							if (store.charsData.length == 0) {
 								store.charsData.push(data.results)
-								console.log(data)
+								
 							}
 						})
 					setStore({ store: store.allCharsData })
@@ -108,8 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//Esta funcion se encarga de recivir el numero de personaje que ocupa para luego hacer un get para luego guardarlo en un array de objetos para poder enseñar la pagina con la informacion
 			//Cada ves que la funcion es llamada el array anterior es borrado para poder enseñar una pagina con la informacion llamada
-			//adicional mente me aseguro de que cuando se busca el numero de personaje este dentro de la lista 
-			//en caso de que no lo este mando al usuario a una paginade error
+			//adicional mente me aseguro de que cuando se busca el numero de personaje este dentro de los personajes disponibles de la api
+			//en caso de que no lo este mando al usuario a una pagina de error
 			getPeople: async (id) => {
 				try {
 					const store = getStore()
@@ -134,17 +134,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 									birth_year: "Not exits",
 									mass: "Not exist"
 								}
-								
+
 								store.selectedCharacterData.push(errorObj)
 								setStore({ store: store.selectedCharacter })
-							
-		
+
+
 							}
 
 						})
-
-
-
 
 				}
 				catch (e) {
@@ -152,7 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			//Con esta funcion recive un string "next" luego de recivirlo llamo a un objeto con la pagina actual 
-			//luego hago un get con el valor del objeto para poder hacer un llamado a la pagina siguiente
+			//luego hago un get con el valor del objeto pagination para poder hacer un llamado a la pagina siguiente
 			//luego hago un push para poder cargar los proximos 10 personajes debajo de los que ya existen
 
 			moreCharsFunc: async (page) => {
@@ -184,7 +181,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.then(data => {
 							if (store.vehiclesData.length == 0) {
 								store.vehiclesData.push(data.results)
-								console.log(data)
+								
 							}
 						})
 					setStore({ store: store.allVehiclesData })
@@ -235,34 +232,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getVehicles: async (id) => {
 				try {
 					const store = getStore()
-					
-						setStore({ store: store.selectedVehiclesData.shift() })
 
-						await fetch(`https://swapi.dev/api/vehicles/${id}`)
-							.then(res => res.json())
-							.then(data => {
-								if (!data.detail) {
+					setStore({ store: store.selectedVehiclesData.shift() })
+
+					await fetch(`https://swapi.dev/api/vehicles/${id}`)
+						.then(res => res.json())
+						.then(data => {
+							if (!data.detail) {
 								store.selectedVehiclesData.push(data)
 								setStore({ store: store.selectedVehiclesData })
-								}else {
-									const errorObj = {
-										name: "Sorry that Page Dont Exist :(",
-										model: "Not exits",
-										url: "Not exitsNot exits",
-										cargo_capacity: "Not exits",
-										manufacturer: "Not exits",
-										cost_in_credits: "Not exits",
-										max_atmosphering_speed: "Not exits",
-										passengers: "Not exits",
-										vehicle_class: "Not exist"
-			
-									}
-									store.selectedVehiclesData.push(errorObj)
-									setStore({ store: store.selectedVehiclesData })
+							} else {
+								const errorObj = {
+									name: "Sorry that Page Dont Exist :(",
+									model: "Not exits",
+									url: "Not exitsNot exits",
+									cargo_capacity: "Not exits",
+									manufacturer: "Not exits",
+									cost_in_credits: "Not exits",
+									max_atmosphering_speed: "Not exits",
+									passengers: "Not exits",
+									vehicle_class: "Not exist"
+
 								}
-							})
-					}
-					
+								store.selectedVehiclesData.push(errorObj)
+								setStore({ store: store.selectedVehiclesData })
+							}
+						})
+				}
+
 				catch (e) {
 					console.log("error getVehicles function=", e)
 				}
@@ -350,34 +347,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 
 					const store = getStore()
-					
-						setStore({ store: store.selectedPlanetsData.shift() })
 
-						await fetch(`https://swapi.dev/api/planets/${id}`)
-							.then(res => res.json())
-							.then(data => {
-								if (!data.detail) {
+					setStore({ store: store.selectedPlanetsData.shift() })
+
+					await fetch(`https://swapi.dev/api/planets/${id}`)
+						.then(res => res.json())
+						.then(data => {
+							if (!data.detail) {
 								store.selectedPlanetsData.push(data)
 								setStore({ store: store.selectedPlanetsData })
-								}	else {
-									const errorObj = {
-										name: "Sorry that Page Dont Exist :(",
-										rotation_period: "Not exits",
-										orbital_period: "Not exits",
-										diameter: "Not exits",
-										climate: "Not exits",
-										terrain: "Not exits",
-										population: "Not exits",
-										gravity: "Not exits",
-										url: "Not exist"
-			
-									}
-									store.selectedPlanetsData.push(errorObj)
-									setStore({ store: store.selectedPlanetsData })
+							} else {
+								const errorObj = {
+									name: "Sorry that Page Dont Exist :(",
+									rotation_period: "Not exits",
+									orbital_period: "Not exits",
+									diameter: "Not exits",
+									climate: "Not exits",
+									terrain: "Not exits",
+									population: "Not exits",
+									gravity: "Not exits",
+									url: "Not exist"
+
 								}
-							})
-						
-				
+								store.selectedPlanetsData.push(errorObj)
+								setStore({ store: store.selectedPlanetsData })
+							}
+						})
+
+
 
 
 				}

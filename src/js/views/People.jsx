@@ -6,7 +6,7 @@ import "../../styles/People.css";
 
 export const People = () => {
     const { store, actions } = useContext(Context);
-    //hago una llamada a useParams() para poder hacer un get dependiendo del numero final
+    //hago una llamada a useParams() para poder hacer un get dependiendo del numero del id del personaje llamado
     const params = useParams();
 
     useEffect(() => {
@@ -79,7 +79,7 @@ export const People = () => {
 
 
                 )}
-                <div className="stars"></div>
+            <div className="stars"></div>
 
         </div>
 
