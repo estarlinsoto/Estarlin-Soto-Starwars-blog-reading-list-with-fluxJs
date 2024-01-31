@@ -3,4 +3,4 @@ This app is built with JavaSpcipt, React, HTML, CSS, Boostrap and the swapi api 
 Esta app esta contruida con JavaSpcipt, React, HTML, CSS, Boostrap y la api de swapi para traer la informacion de todos los personajes, planetas y vehiculos, todas las vistas son responsives y complemente funcionales en telefonos celulares para ver una demostracion de la app, aqui hay un video que muestra la aplicacion corriendo de manera local.
 
 
-[![Estarlin-Soto-Starwars-blog-reading-list-with-fluxJs](https://img.youtube.com/vi/wh1_smgy_Qg&t=33s/0.jpg)](https://www.youtube.com/watch?v=wh1_smgy_Qg&t=33s)
+[![Estarlin-Soto-Starwars-blog-reading-list-with-fluxJs]([https://img.youtube.com/vi/wh1_smgy_Qg&t=33s/0.jpg](https://i.ytimg.com/vi/wh1_smgy_Qg/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARg2IF4ocjAP&rs=AOn4CLDWy-aYgkwx2p5D1F-B-KSdVxyp0w)https://i.ytimg.com/vi/wh1_smgy_Qg/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARg2IF4ocjAP&rs=AOn4CLDWy-aYgkwx2p5D1F-B-KSdVxyp0w)](https://www.youtube.com/watch?v=wh1_smgy_Qg&t=33s)
