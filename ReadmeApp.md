@@ -3,4 +3,4 @@ This app is built with JavaSpcipt, React, HTML, CSS, Boostrap and the swapi api 
 Esta app esta contruida con JavaSpcipt, React, HTML, CSS, Boostrap y la api de swapi para traer la informacion de todos los personajes, planetas y vehiculos, todas las vistas son responsives y complemente funcionales en telefonos celulares para ver una demostracion de la app, aqui hay un video que muestra la aplicacion corriendo de manera local.
 
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wh1_smgy_Qg/0.jpg)](https://www.youtube.com/watch?v=wh1_smgy_Qg)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Oy7M80g5Lyw/0.jpg)](https://www.youtube.com/watch?v=Oy7M80g5Lyw)
